@@ -12,10 +12,7 @@
   <section id="main">
     <ul id="todo-list">
       {{#each model as |todo|}}
-        <li class="{{if todo.isCompleted 'completed'}}">
-          <input type="checkbox" class="toggle">
-          <label>{{todo.title}}</label><button class="destroy"></button>
-        </li>
+        {{todo-component todo=todo}}
       {{/each}}
     </ul>
     <input type="checkbox" id="toggle-all">
