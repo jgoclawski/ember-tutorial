@@ -19,5 +19,13 @@ export default Ember.Controller.extend({
       // Save the new model
       todo.save();
     }
-  }
+  },
+  remaining: Ember.computed('model.@each.isCompleted', function() {
+    var todos = this.get('model');
+    return todos.filterBy('isCompleted', false).get('length');
+  }),
+  inflection: Ember.computed('remaining', function() {
+    var remaining = this.get('remaining');
+    return remaining === 1 ? 'todo' : 'todos';
+  })
 });
