@@ -11,6 +11,20 @@ export default Ember.Component.extend({
     },
     edit() {
       this.set('isEditing', true);
+    },
+    acceptChanges() {
+      this.set('isEditing', false);
+
+      if (Ember.isEmpty(this.get('todo.title'))) {
+        this.send('removeTodo');
+      } else {
+        this.get('todo').save();
+      }
+    },
+    removeTodo() {
+      var todo = this.get('todo');
+      todo.deleteRecord();
+      todo.save();
     }
   }
 });
