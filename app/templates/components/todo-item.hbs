@@ -3,6 +3,7 @@
     {{edit-todo class="edit" value=todo.title focus-out="acceptChanges" insert-newline="acceptChanges"}}
   {{else}}
     <input type="checkbox" class="toggle" checked={{todo.isCompleted}} onclick={{action "complete" value="target.checked"}} />
-    <label {{action "edit" on="doubleClick"}}>{{todo.title}}</label><button class="destroy"></button>
+    <label {{action "edit" on="doubleClick"}}>{{todo.title}}</label>
+      <button class="destroy" {{action "removeTodo"}}></button>
   {{/if}}
 </li>
