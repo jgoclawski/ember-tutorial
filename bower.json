@@ -12,9 +12,5 @@
     "loader.js": "3.3.0",
     "qunit": "~1.19.0",
     "localforage": "~1.2.1"
-  },
-  "resolutions": {
-    "ember": "^2.1.0",
-    "qunit-notifications": "~0.1.0"
   }
 }
