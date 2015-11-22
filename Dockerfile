@@ -1,17 +1,18 @@
 FROM node:4.2
 
-RUN npm install --global --loglevel="info" ember-cli@1.13.12
+RUN npm install --global --loglevel="info" ember-cli@1.13.13
 RUN npm install --global --loglevel="info" bower@1.6.5
 RUN npm install --global --loglevel="info" phantomjs@1.9.18
 
 RUN git clone https://github.com/facebook/watchman.git && \
 	cd watchman && \
-	git checkout v3.5.0 && \
+	git checkout v4.1.0 && \
 	./autogen.sh && \
-	./configure && \
+	./configure --without-python && \
 	make && \
 	make install && \
-	make clean
+	cd .. && \
+	rm -r watchman
 
 WORKDIR /app
 COPY package.json package.json
