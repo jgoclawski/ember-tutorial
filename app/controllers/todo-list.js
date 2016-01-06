@@ -18,6 +18,11 @@ export default Ember.Controller.extend({
 
       // Save the new model
       todo.save();
+    },
+    clearCompleted() {
+      let completed = this.get('model').filterBy('isCompleted', true);
+      completed.invoke('deleteRecord');
+      completed.invoke('save');
     }
   },
   remaining: Ember.computed('model.@each.isCompleted', function() {
@@ -27,5 +32,11 @@ export default Ember.Controller.extend({
   inflection: Ember.computed('remaining', function() {
     var remaining = this.get('remaining');
     return remaining === 1 ? 'todo' : 'todos';
+  }),
+  hasCompleted: Ember.computed('completed', function() {
+    return this.get('completed') > 0;
+  }),
+  completed: Ember.computed('model.@each.isCompleted', function() {
+    return this.get('model').filterBy('isCompleted', true).get('length');
   })
 });
