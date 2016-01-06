@@ -11,8 +11,7 @@
 
   <section id="main">
     {{outlet}}
-
-    {{input type="checkbox" id="toggle-all" checked=allAreDone}}
+    <input type="checkbox" id="toggle-all" checked={{allAreDone}} onclick={{action "completeAll" value="target.checked"}} />
   </section>
 
   <footer id="footer">

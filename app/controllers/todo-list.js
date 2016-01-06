@@ -23,6 +23,11 @@ export default Ember.Controller.extend({
       let completed = this.get('model').filterBy('isCompleted', true);
       completed.invoke('deleteRecord');
       completed.invoke('save');
+    },
+    completeAll(value) {
+      let todos = this.get('model');
+      todos.setEach('isCompleted', value);
+      todos.invoke('save');
     }
   },
   remaining: Ember.computed('model.@each.isCompleted', function() {
