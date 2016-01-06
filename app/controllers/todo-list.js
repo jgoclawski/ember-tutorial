@@ -1,22 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  newTitle: '',
   actions: {
     createTodo() {
-      // Get the todo title set by the "New Todo" text field
-      var title = this.get('newTitle');
-      if (!title.trim()) { return; }
+      let title = this.get('newTitle');
+      if (!title.trim()) {
+        return;
+      }
 
-      // Create the new Todo model
-      var todo = this.store.createRecord('todo', {
+      let todo = this.store.createRecord('todo', {
         title: title,
         isCompleted: false
       });
-
-      // Clear the "New Todo" text field
       this.set('newTitle', '');
-
-      // Save the new model
       todo.save();
     },
     clearCompleted() {
@@ -31,11 +28,10 @@ export default Ember.Controller.extend({
     }
   },
   remaining: Ember.computed('model.@each.isCompleted', function() {
-    var todos = this.get('model');
-    return todos.filterBy('isCompleted', false).get('length');
+    return this.get('model').filterBy('isCompleted', false).get('length');
   }),
   inflection: Ember.computed('remaining', function() {
-    var remaining = this.get('remaining');
+    let remaining = this.get('remaining');
     return remaining === 1 ? 'todo' : 'todos';
   }),
   hasCompleted: Ember.computed('completed', function() {
