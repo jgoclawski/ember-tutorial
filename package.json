@@ -37,6 +37,7 @@
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
 
+    "ember-data-filter": "1.13.0",
     "ember-localforage-adapter": "2.1.1"
   }
 }
