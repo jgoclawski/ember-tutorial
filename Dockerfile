@@ -2,7 +2,7 @@ FROM node:4.2
 
 RUN npm install --global --loglevel="info" ember-cli@2.2.0-beta.3
 RUN npm install --global --loglevel="info" bower@1.6.5
-RUN npm install --global --loglevel="info" phantomjs@1.9.18
+RUN npm install --global --loglevel="info" phantomjs-prebuilt@2.1.4
 
 RUN git clone https://github.com/facebook/watchman.git && \
 	cd watchman && \
