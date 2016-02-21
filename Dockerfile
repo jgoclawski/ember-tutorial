@@ -1,6 +1,6 @@
 FROM node:4.2
 
-RUN npm install --global --loglevel="info" ember-cli@2.2.0-beta.3
+RUN npm install --global --loglevel="info" ember-cli@2.3.0
 RUN npm install --global --loglevel="info" bower@1.6.5
 RUN npm install --global --loglevel="info" phantomjs-prebuilt@2.1.4
 
