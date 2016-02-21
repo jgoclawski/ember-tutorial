@@ -24,3 +24,6 @@ COPY . /app
 
 EXPOSE 4200 49152
 CMD ["ember", "serve", "--port=4200", "--live-reload-port=49152"]
+
+RUN ember build -prod
+RUN ember serve
